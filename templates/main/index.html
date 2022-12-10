@@ -1,0 +1,28 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+
+    <h1>Лента видеороликов</h1>
+
+    {% if links %}
+
+        {% for el in links %}
+            <div class="alert alert-warning mt-2">
+                <h3>{{ el.button_text }}</h3>
+                <p>{{ el.user_id }}</p>
+                <p>{{ el.link_address }}</p>
+                <p>{{ el.theme_id }}</p>
+            </div>
+        {% endfor %}
+
+    {% else %}
+
+        <p>Пока нет ни одного видео</p>
+
+    {% endif %}
+
+{% endblock %}

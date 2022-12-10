@@ -1,0 +1,23 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+    <h1>Регистрация</h1>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {% for el in form %}
+
+            {{ el.label_tag }}  {{ el }} <br><br>
+
+        {% endfor %}
+
+        <button type="submit" class="btn btn-success">Регистрация</button>
+        <span> {{ error }} </span>
+    </form>
+
+{% endblock %}

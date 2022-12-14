@@ -1,11 +1,11 @@
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 
 from .forms import AuthUserForm, RegUserForm
 from users.models import CustomUser
+from main.models import Link
 
 
 class BlogLoginView(LoginView):
@@ -35,3 +35,14 @@ class BlogRegisterView(CreateView):
 
 class BlogLogoutView(LogoutView):
     next_page = reverse_lazy('home')
+
+
+class BlogProfileView(DetailView):
+    model = CustomUser
+    context_object_name = 'profile'
+    template_name = 'account/profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_links'] = Link.objects.filter(user_id=context['object'].id)
+        return context

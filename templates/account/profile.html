@@ -1,0 +1,43 @@
+{% extends 'main/base.html'%}
+
+{% block title %}
+Профиль {{ object }}
+{% endblock %}
+
+{% block content %}
+
+    <p><img src="{{object.avatar.url}}"></p>
+
+    <h1>Профиль {{ object }}</h1>
+
+    {% if user.id == object.id %}
+        <h1>Ваши видео:</h1>
+    {% else %}
+        <h1>Опубликованные видео:</h1>
+    {% endif %}
+
+    <div>
+
+      {% if user_links %}
+
+        {% for el in user_links %}
+
+            <div class="alert alert-warning mt-2">
+                <p>{{ el.button_text }}</p>
+                <p>{{ el.user_id }}</p>
+                <p>{{ el.link_address }}</p>
+                <p>{{ el.theme_id }}</p>
+            </div>
+
+        {% endfor %}
+
+
+    {% else %}
+
+      <p>Пока нет ни одного видео</p>
+
+    {% endif %}
+
+  </div>
+
+{% endblock %}

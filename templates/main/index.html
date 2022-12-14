@@ -13,7 +13,7 @@
         {% for el in links %}
             <div class="alert alert-warning mt-2">
                 <h3>{{ el.button_text }}</h3>
-                <p>{{ el.user_id }}</p>
+                <p><a href="{% url 'profile' el.user_id.id %}">{{ el.user_id }}</a></p>
                 <p>{{ el.link_address }}</p>
                 <p>{{ el.theme_id }}</p>
             </div>

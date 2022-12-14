@@ -10,7 +10,7 @@
           {% if user.is_authenticated %}
 
           <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'add_vid' %}">Добавить видео</a>
-          <a class="me-3 py-2 text-decoration-none" href="/">{{ user.username }}</a>
+          <a class="me-3 py-2 text-decoration-none" href="{% url 'profile' user.id %}">{{ user.username }}</a>
           <a class="me-3 py-2 text-dark text-decoration-none" href="{% url 'account_logout' %}">Выйти</a>
 
           {% else %}
